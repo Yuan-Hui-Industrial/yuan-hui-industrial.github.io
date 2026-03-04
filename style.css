@@ -256,4 +256,64 @@ footer p { margin-bottom: 8px; }
     background: white;
     padding: 30px 8%;
     border-bottom: 1px solid #eee;
+
+}
+/* --- 手機版專屬 RWD 救援修正 --- */
+@media (max-width: 768px) {
+    /* 1. 導覽列：高度改為自動，允許內容換行 */
+    nav {
+        flex-direction: column; /* 讓 Logo 與選單變成上下排列 */
+        height: auto;
+        padding: 15px 5%;
+    }
+
+    /* 2. Logo：縮小文字避免擠壓 */
+    .logo-img {
+        height: 35px; /* 手機版 Logo 縮小一點 */
+        margin-right: 10px;
+    }
+
+    .logo-text b {
+        font-size: 1.1rem !important; /* 公司名稱縮小 */
+    }
+
+    .logo-text span {
+        font-size: 0.6rem !important;
+    }
+
+    /* 3. 選單：讓按鈕橫向並排並置中 */
+    .nav-links {
+        margin-top: 15px;
+        gap: 10px;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .nav-links li {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .nav-links a {
+        font-size: 0.85rem;
+    }
+
+    /* 4. Banner：縮小標題字體，避免文字重疊 */
+    .hero h1, .page-banner h1 {
+        font-size: 1.8rem !important;
+        padding: 0 5%;
+    }
+
+    .hero p, .page-banner p {
+        font-size: 0.9rem !important;
+        padding: 0 8%;
+        letter-spacing: 1px;
+    }
+
+    /* 5. 聯絡資訊與表單：強制單欄排列 */
+    .contact-container {
+        grid-template-columns: 1fr !important; /* 強制變成一列 */
+        padding: 40px 5% !important;
+        gap: 30px !important;
+    }
 }
