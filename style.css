@@ -250,65 +250,49 @@ footer p { margin-bottom: 8px; }
     margin-bottom: 15px;
     color: var(--primary);
 }
-/* --- 1. 修正原本的篩選按鈕區塊 (確保括號正確) --- */
-.filter-buttons {
-    top: 90px; 
-    background: white;
-    padding: 30px 8%;
-    border-bottom: 1px solid #eee;
-}
-
-/* --- 2. 徹底解決手機版頁首過寬的問題 --- */
+/* --- 徹底修正手機版頁首寬度 --- */
 @media (max-width: 768px) {
-    /* 強制禁止橫向捲軸 */
+    /* 1. 強制讓網頁寬度鎖定在 100%，不准左右滑 */
     html, body {
+        width: 100vw;
         overflow-x: hidden;
-        width: 100%;
     }
 
-    /* 頁首改為垂直排列，避免 Logo 與選單擠在同一行 */
+    /* 2. 頁首改為垂直排列：Logo 在上，選單在下 */
     nav {
         flex-direction: column !important;
-        height: auto !important; /* 讓高度隨內容增長 */
-        padding: 15px 0 !important; /* 縮減左右內邊距 */
-        justify-content: center;
+        height: auto !important;
+        padding: 15px 5% !important;
     }
 
-    /* 縮小 Logo 尺寸 */
+    /* 3. 讓 Logo 置中且縮小 */
     .logo {
         margin-bottom: 10px;
+        justify-content: center;
+        width: 100%;
     }
     .logo-img {
         height: 35px !important;
-        margin-right: 8px !important;
-    }
-    .logo-text b {
-        font-size: 1.1rem !important;
     }
 
-    /* 選單改為橫向自動換行，並置中 */
+    /* 4. 選單縮小並置中，允許自動換行 */
     .nav-links {
-        margin: 0 !important;
-        padding: 0 10px;
+        padding: 0;
+        margin: 0;
         display: flex;
-        flex-wrap: wrap; /* 重要：讓按鈕太多時自動換行 */
+        flex-wrap: wrap; 
         justify-content: center;
-        gap: 10px;
+        gap: 8px;
     }
 
     .nav-links li {
-        margin: 5px !important; /* 縮減按鈕間距 */
+        margin: 0 !important;
     }
 
     .nav-links a {
         font-size: 0.85rem !important;
-        padding: 5px 8px;
-    }
-
-    /* 修正 Banner 文字過大的問題 */
-    .hero h1, .page-banner h1 {
-        font-size: 1.8rem !important;
-        width: 90%;
-        margin: 0 auto 10px;
+        padding: 5px 10px;
+        background: rgba(0,0,0,0.03); /* 增加一點按鈕感，方便手機點擊 */
+        border-radius: 4px;
     }
 }
