@@ -250,49 +250,48 @@ footer p { margin-bottom: 8px; }
     margin-bottom: 15px;
     color: var(--primary);
 }
-/* --- 徹底修正手機版頁首寬度 --- */
+/* --- 修正原本的篩選按鈕區塊，確保括號正確 --- */
+.filter-buttons {
+    top: 90px; 
+    background: white;
+    padding: 30px 8%;
+    border-bottom: 1px solid #eee;
+}
+
+/* --- 手機版徹底救援修正 (RWD) --- */
 @media (max-width: 768px) {
-    /* 1. 強制讓網頁寬度鎖定在 100%，不准左右滑 */
-    html, body {
-        width: 100vw;
-        overflow-x: hidden;
-    }
-
-    /* 2. 頁首改為垂直排列：Logo 在上，選單在下 */
+    /* 1. 解決頁首太寬的問題 */
     nav {
-        flex-direction: column !important;
+        flex-direction: column !important; /* 讓 Logo 與選單上下排列 */
         height: auto !important;
-        padding: 15px 5% !important;
+        padding: 15px 0 !important;
+        width: 100% !important;
     }
 
-    /* 3. 讓 Logo 置中且縮小 */
     .logo {
         margin-bottom: 10px;
         justify-content: center;
-        width: 100%;
-    }
-    .logo-img {
-        height: 35px !important;
     }
 
-    /* 4. 選單縮小並置中，允許自動換行 */
     .nav-links {
-        padding: 0;
-        margin: 0;
         display: flex;
-        flex-wrap: wrap; 
+        flex-wrap: wrap; /* 讓選單按鈕自動換行，不撐寬網頁 */
         justify-content: center;
         gap: 8px;
+        padding: 0 10px;
     }
 
-    .nav-links li {
-        margin: 0 !important;
+    .nav-links li { margin: 0 !important; }
+
+    /* 2. 修正 Banner 文字在手機上太大的問題 */
+    .hero h1, .page-banner h1 {
+        font-size: 1.8rem !important;
+        padding: 0 5%;
     }
 
-    .nav-links a {
-        font-size: 0.85rem !important;
-        padding: 5px 10px;
-        background: rgba(0,0,0,0.03); /* 增加一點按鈕感，方便手機點擊 */
-        border-radius: 4px;
+    /* 3. 防止網頁左右晃動 */
+    html, body {
+        overflow-x: hidden;
+        width: 100%;
     }
 }
