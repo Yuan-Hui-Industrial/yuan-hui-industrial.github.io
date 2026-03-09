@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>沅徽實業有限公司 | 專業水利維護與燃油系統工程</title>
+    <script>
+        if (sessionStorage.getItem("hasSeenLoader")) {
+            document.documentElement.classList.add('no-loader');
+        }
+    </script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
@@ -29,7 +34,17 @@
     </style>
 </head>
 <body>
-
+<div id="loader-wrapper">
+    <div class="loader-content">
+        <div class="ripple-container">
+            <img src="images/logo.png" alt="沅徽實業" class="loader-logo">
+            <div class="ripple"></div>
+            <div class="ripple"></div>
+            <div class="ripple"></div>
+        </div>
+        <p class="loader-text">沅徽實業 · 深耕水利</p>
+    </div>
+</div>
     <nav>
 <a href="./" class="logo">
     <img src="images/logo.png" alt="沅徽實業 Logo" class="logo-img">
@@ -140,8 +155,25 @@
         document.querySelectorAll('.anim, .count').forEach(el=> io.observe(el));
     });
     </script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const loader = document.getElementById("loader-wrapper");
+        
+        // 檢查瀏覽器內部的「快閃記憶體」，看看這回合是否看過動畫
+        if (sessionStorage.getItem("hasSeenLoader")) {
+            // 如果看過了，直接移除動畫層，不留痕跡
+            loader.style.display = "none";
+        } else {
+            // 如果是第一次進站，等網頁載入完畢後執行動畫
+            window.addEventListener("load", function() {
+                setTimeout(() => {
+                    loader.classList.add("loader-hidden");
+                    // 標記「已經看過了」，直到關閉瀏覽器分頁為止
+                    sessionStorage.setItem("hasSeenLoader", "true");
+                }, 1500);
+            });
+        }
+    });
+</script>
 </body>
-
 </html>
-
-
